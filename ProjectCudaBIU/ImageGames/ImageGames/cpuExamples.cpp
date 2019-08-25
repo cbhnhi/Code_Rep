@@ -1,7 +1,10 @@
 
 #include "stdafx.h"
 #include "cpuExamples.h"
-
+//#include"cuda.h"
+//#include"cuda_runtime.h"
+//#include"device_launch_parameters.h"
+#include "..\TestCuda\Playground.cuh"
 
 //#pragma warning(disable:C4996)
 using namespace std;
@@ -20,6 +23,15 @@ using namespace cv;
 	{
 		string filename2 = "D:\\Benjamin\\Code_Rep\\ProjectCudaBIU\\1.jpg";
 		string filename = "D:\\Benjamin\\Code_Rep\\ProjectCudaBIU\\2.jpg";
+
+		//cudaError_t cudaStatus;
+
+		// Choose which GPU to run on, change this on a multi-GPU system.
+		//cudaStatus = cudaSetDevice(0);
+		//if (cudaStatus != cudaSuccess) {
+			//fprintf(stderr, "cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?");
+		//}
+
 		//VideoCapture vc;
 		//if (!vc.open(filename2))
 		//{
@@ -39,6 +51,10 @@ using namespace cv;
 		uint gX;
 		uint gY;
 		uint final;
+		uchar raw3;
+
+		
+		DoGradientWork(color[1].data,&raw3 , color[1].rows, color[1].step, color[1].cols);
 		uchar*raw2 = color[1].data;
 		for (int k = 0; k < 3; k++)
 		{
@@ -72,10 +88,7 @@ using namespace cv;
 
 		//(1920, 1080, CV_8UC1);
 		
-		imwrite("D:\\Benjamin\\Eliraz.png", a);
-		//Image b;
-		imshow("a", a);
-		waitKey();
+		int k = 0;
 
 	}
 

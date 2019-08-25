@@ -11,34 +11,35 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
-
 public class Core implements ActionListener, KeyListener{
-	public JFrame m_jFrame;
+	JFrame m_jFrame;
 	public static Core m_Snake_core;
 	GiantWorm snake;
-	public RenderPanel m_RenderPanel;
+	Dimension dim;
 	public Random random;
 	public Point apple;
 	public Timer timer = new Timer(80,this);
 	public int score=0;
 	public boolean paused=false;
-	public Dimension dim ;
+public RenderPanel m_RenderPanel;
 	public Core()
 	{
+		random= new Random();
 		 dim = Toolkit.getDefaultToolkit().getScreenSize();
-		m_jFrame = new JFrame("Snake");
-		m_jFrame.setVisible(true);
-		m_jFrame.setSize(800, 700);
-		m_jFrame.setResizable(false);
-		m_jFrame.setLocation(dim.width/2-m_jFrame.getWidth()/2, dim.height/2-m_jFrame.getHeight()/2);;
-		m_jFrame.add(m_RenderPanel = new RenderPanel());
-		m_jFrame.addKeyListener(this);
-		m_jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			m_jFrame = new JFrame("Snake");
+			m_jFrame.setVisible(true);
+			m_jFrame.setSize(800, 700);
+			m_jFrame.setResizable(false);
+			m_jFrame.setLocation(dim.width/2-m_jFrame.getWidth()/2, dim.height/2-m_jFrame.getHeight()/2);
+			m_jFrame.add(m_RenderPanel = new RenderPanel());
+			m_jFrame.addKeyListener(this);
+			m_jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		startGame();
 	}
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		m_Snake_core=new Core();
+		Core m_Snake_core=new Core();
 		
 		
 	}
